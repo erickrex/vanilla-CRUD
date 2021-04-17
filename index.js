@@ -6,13 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const alert = document.getElementById("alert");
   const btn = document.getElementById("add");
 
-  btn.onclick = function () {
-    console.log(title.value + description.value);
-  };
   function addTodo() {
     if (title.value === "" || description.value == "") {
       alert.classList.remove("d-none");
       alert.innerText = "Title and description are required";
+      console.error("Title and description are required");
       return;
     }
 
@@ -24,4 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <td></td>
         `;
   }
+
+  btn.onclick = addTodo;
 });
