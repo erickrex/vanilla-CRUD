@@ -1,12 +1,31 @@
 export default class Model {
   constructor() {
+    console.log("constructor");
     this.view = null;
-    this.todos = [];
-    this.currentId = 1;
+    this.todos = JSON.parse(localStorage.getItem("todos"));
+    if (!this.todos || this.todos.length < 1) {
+      this.todos = [
+        {
+          id: 0,
+          title: "Example of title",
+          description: "Example of description",
+          completed: false,
+        },
+      ];
+      this.currentId = 1;
+    } else {
+      this.currentId = this.todos[this.todos.length - 1].id + 1;
+    }
   }
+
   setView(view) {
     this.view = view;
   }
+
+  save() {
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
+
   getTodos() {
     return this.todos;
   }
@@ -31,13 +50,15 @@ export default class Model {
       completed: false,
     };
     this.todos.push(todo);
-    console.log(this.todos);
-
+    console.log("addTodo function", this.todos);
+    this.save();
     return { ...todo };
   }
 
   removeTodo(id) {
     const index = this.findTodo(id);
+    this.todos.splice(index, 1);
+    this.save();
     this.todos.splice(index, 1);
   }
 }

@@ -4,6 +4,7 @@ export default class AddTodo {
     this.title = document.getElementById("title");
     this.description = document.getElementById("description");
   }
+
   onClick(callback) {
     this.btn.onclick = () => {
       if (title.value === "" || description.value == "") {

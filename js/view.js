@@ -1,4 +1,5 @@
 import AddTodo from "./components/add-todo.js";
+
 export default class View {
   constructor() {
     this.model = null;
