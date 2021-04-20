@@ -4,7 +4,6 @@ export default class AddTodo {
     this.btn = document.getElementById("add");
     this.title = document.getElementById("title");
     this.description = document.getElementById("description");
-
     this.alert = new Alert("alert");
   }
 
