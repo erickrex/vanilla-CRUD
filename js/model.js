@@ -39,7 +39,8 @@ export default class Model {
     const index = this.findTodo(id);
     const todo = this.todos[index];
     todo.completed = !todo.completed;
-    console.log("todos los todos", this.todos);
+    console.log("all todos are", this.todos);
+    this.save();
   }
 
   addTodo(title, description) {
